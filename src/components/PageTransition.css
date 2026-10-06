@@ -1,0 +1,26 @@
+.pt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.pt-panel {
+  position: absolute;
+  inset: 0;
+}
+.pt-panel--pink { background: var(--pink); }
+.pt-panel--yellow { background: var(--yellow); }
+.pt-panel--ink {
+  display: grid;
+  place-items: end start;
+  padding: var(--gutter);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.pt-label {
+  font-size: clamp(2.6rem, 9vw, 8rem);
+  max-width: 14ch;
+}

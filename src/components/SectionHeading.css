@@ -1,0 +1,61 @@
+.sh {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: clamp(16px, 3vw, 48px);
+  row-gap: 18px;
+  align-items: start;
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+
+.sh-meta {
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding-top: 4px;
+  color: var(--muted);
+}
+.sh-index {
+  font-size: 0.95rem;
+  color: var(--fg);
+}
+.sh-slash {
+  transform: rotate(20deg);
+}
+
+.sh-label {
+  color: var(--muted);
+}
+
+.sh-title {
+  grid-column: 2;
+  font-size: var(--fs-h1);
+}
+.sh-title .serif {
+  font-size: 1.04em;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.sh-aside {
+  grid-column: 2;
+  max-width: 46ch;
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .sh {
+    grid-template-columns: 1fr;
+  }
+  .sh-meta {
+    grid-row: auto;
+    flex-direction: row;
+    gap: 6px;
+  }
+  .sh-title,
+  .sh-aside {
+    grid-column: 1;
+  }
+}

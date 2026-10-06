@@ -1,0 +1,116 @@
+.section.contact {
+  /* tighter than other sections, and only a small gap before the footer */
+  padding-block: clamp(48px, 6vw, 88px) clamp(24px, 3vw, 40px);
+  background: var(--pink);
+  color: var(--ink);
+  border-top: 2px solid var(--ink);
+  overflow: hidden;
+}
+
+.contact-title {
+  font-size: clamp(2.4rem, 6vw, 5.6rem);
+  line-height: 0.86;
+}
+.contact-title .split-line:nth-child(2) {
+  padding-left: 8vw;
+}
+.contact-title .split-line:nth-child(2) .serif {
+  color: var(--paper);
+}
+.contact-title .split-line:nth-child(3) {
+  color: var(--pink);
+  -webkit-text-stroke: 3px var(--ink);
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 32px;
+  margin: clamp(24px, 3vw, 36px) 0;
+}
+.contact-cta .btn,
+.contact .btn {
+  --btn-bg: var(--ink);
+  --btn-fg: var(--paper);
+  --btn-shadow: var(--yellow);
+}
+.contact .btn--lg {
+  min-height: 60px;
+  padding-inline: 2em;
+  font-size: 0.9rem;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 8px 8px 8px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.contact-copy {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.contact-socials {
+  margin: 0;
+  border-top: 2px solid var(--ink);
+}
+.contact-social {
+  display: grid;
+  grid-template-columns: 50px 1fr auto 40px;
+  gap: 18px;
+  align-items: center;
+  padding: 6px 8px;
+  border-bottom: 2px solid var(--ink);
+  transition: background-color 0.3s ease, padding 0.5s var(--ease-out);
+}
+.contact-social-label {
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+  transition: transform 0.5s var(--ease-spring);
+}
+.contact-social-arrow {
+  font-size: 1.2rem;
+  justify-self: end;
+  transition: transform 0.5s var(--ease-spring);
+}
+.contact-social:hover,
+.contact-social:focus-visible {
+  background: var(--ink);
+  color: var(--pink);
+}
+.contact-social:hover .contact-social-label {
+  transform: translateX(12px) skewX(-6deg);
+}
+.contact-social:hover .contact-social-arrow {
+  transform: rotate(45deg) scale(1.2);
+}
+
+@media (max-width: 760px) {
+  .contact-title .split-line:nth-child(2) {
+    padding-left: 0;
+  }
+  .contact-social {
+    grid-template-columns: 34px 1fr 30px;
+  }
+  .contact-social-handle {
+    display: none;
+  }
+  .contact-email {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .contact-email span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

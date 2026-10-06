@@ -1,0 +1,99 @@
+.lab {
+  --bg: var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
+  overflow: hidden;
+  border-block: 2px solid var(--ink);
+}
+.section.lab--page {
+  padding-top: calc(var(--nav-h) + 80px);
+  border-top: 0;
+}
+
+/* Graph-paper lab-notebook background */
+.lab-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.lab-head {
+  position: relative;
+  display: grid;
+  gap: 28px;
+}
+.lab-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+}
+.lab-title {
+  font-size: clamp(3rem, 10vw, 10.5rem);
+  line-height: 0.88;
+}
+.lab-title .split-line:nth-child(2) {
+  padding-left: 12vw;
+  color: var(--purple);
+}
+.lab-title .split-line:nth-child(2) .serif {
+  font-size: 1.05em;
+}
+.lab-title .split-line:nth-child(3) {
+  padding-left: 4vw;
+  transform: rotate(-2deg);
+  transform-origin: left;
+}
+.lab-title .split-line:nth-child(3) .split-word:last-child .split-inner {
+  padding: 0 0.1em;
+  background: var(--pink);
+}
+
+.lab-intro {
+  max-width: 44ch;
+  margin-left: auto;
+  font-size: var(--fs-lead);
+  line-height: 1.35;
+}
+
+.lab-badge {
+  position: absolute;
+  top: 20%;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 150px;
+  height: 150px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--lime);
+  font-size: 2.6rem;
+  transform: rotate(14deg);
+  box-shadow: var(--shadow-hard);
+  animation: wobble 5s ease-in-out infinite;
+}
+@keyframes wobble {
+  50% { transform: rotate(-6deg) scale(1.05); }
+}
+
+.lab-foot {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 760px) {
+  .lab-badge {
+    width: 92px;
+    height: 92px;
+    font-size: 1.6rem;
+    top: -64px;
+  }
+  .lab-title .split-line:nth-child(2),
+  .lab-title .split-line:nth-child(3) {
+    padding-left: 0;
+  }
+}

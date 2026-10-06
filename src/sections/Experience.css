@@ -1,0 +1,99 @@
+.xp-wrap {
+  position: relative;
+  padding-left: clamp(28px, 4vw, 48px);
+}
+
+.xp-rail {
+  position: absolute;
+  left: 7px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: var(--line);
+}
+.xp-progress {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--pink), var(--purple));
+  transform-origin: top;
+}
+
+.xp-list {
+  margin: 0;
+  display: grid;
+}
+
+.xp-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(160px, 0.7fr) 2fr;
+  gap: 24px;
+  padding: 36px 0;
+  border-bottom: 1.5px solid var(--line);
+}
+.xp-item:first-child {
+  padding-top: 0;
+}
+
+.xp-dot {
+  position: absolute;
+  left: calc(clamp(28px, 4vw, 48px) * -1 + 1px);
+  top: 44px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--yellow);
+}
+.xp-item:first-child .xp-dot {
+  top: 8px;
+}
+
+.xp-year {
+  font-size: clamp(2.2rem, 4.4vw, 4rem);
+  color: var(--paper);
+  -webkit-text-stroke: 3px var(--ink);
+  transition: color 0.3s ease;
+}
+.xp-item:hover .xp-year {
+  color: var(--pink);
+}
+
+.xp-body {
+  display: grid;
+  gap: 8px;
+  max-width: 62ch;
+}
+.xp-role {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 700;
+  font-variation-settings: 'wdth' 90;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.xp-org {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.35rem;
+}
+.xp-dates {
+  color: var(--muted);
+}
+.xp-desc {
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .xp-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .xp-dot,
+  .xp-item:first-child .xp-dot {
+    top: 14px;
+  }
+  .xp-item:not(:first-child) .xp-dot {
+    top: 50px;
+  }
+}

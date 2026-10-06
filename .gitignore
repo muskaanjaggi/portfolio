@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.local
+.env
+.vercel
+.netlify
+
+# full-size originals (contain phone metadata) — never publish
+_originals

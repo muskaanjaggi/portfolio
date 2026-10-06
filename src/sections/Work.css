@@ -1,0 +1,20 @@
+.work {
+  overflow: hidden;
+}
+
+.work-count {
+  position: absolute;
+  top: calc(var(--section-y) - 0.2em);
+  right: var(--gutter);
+  font-size: clamp(8rem, 24vw, 24rem);
+  color: var(--paper);
+  -webkit-text-stroke: 4px var(--pink);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.work-list {
+  position: relative;
+  z-index: 1;
+}

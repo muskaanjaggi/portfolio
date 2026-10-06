@@ -1,0 +1,120 @@
+.pillars {
+  position: relative;
+  z-index: 5;
+  /* height is set from JS: one screen + the sideways travel distance */
+}
+
+/* The browser "pins" this for us — no overflow:hidden on .pillars, it would break sticky */
+.pillars-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.pillars-track {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  height: 100%;
+  will-change: transform;
+}
+
+.pillars-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  width: 52vw;
+  padding: 0 var(--gutter);
+  color: var(--paper);
+}
+.pillars-title {
+  font-size: var(--fs-h1);
+}
+.pillars-title .serif {
+  color: var(--yellow);
+}
+.pillars-arrow {
+  display: inline-block;
+  margin-left: 0.15em;
+  color: var(--pink);
+  animation: nudge 1.6s ease-in-out infinite;
+}
+@keyframes nudge {
+  50% { transform: translateX(0.2em); }
+}
+
+.pillar {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 68vw;
+  margin: 12vh 2vw;
+  padding: clamp(28px, 4vw, 56px);
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-l);
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 10px 10px 0 var(--paper);
+}
+.pillar:nth-of-type(odd) { transform: rotate(-1.2deg); }
+.pillar:nth-of-type(even) { transform: rotate(1deg); }
+
+.pillar-num {
+  position: absolute;
+  top: -0.12em;
+  right: -0.04em;
+  font-size: clamp(12rem, 34vw, 32rem);
+  line-height: 0.8;
+  color: var(--accent);
+  -webkit-text-stroke: 4px var(--ink);
+  opacity: 0.9;
+}
+
+.pillar-body {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  max-width: 560px;
+}
+.pillar-title {
+  font-size: clamp(3rem, 7vw, 7rem);
+}
+.pillar-title .serif {
+  font-size: 1.05em;
+}
+.pillar-text {
+  font-size: var(--fs-lead);
+  line-height: 1.35;
+  max-width: 34ch;
+}
+
+@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+  .pillars-sticky {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+  .pillars-track {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: var(--section-y) var(--gutter);
+    gap: 28px;
+  }
+  .pillars-intro {
+    width: auto;
+    padding: 0 0 24px;
+  }
+  .pillars-arrow { transform: rotate(90deg); animation: none; }
+  .pillar {
+    width: auto;
+    margin: 0;
+    min-height: 360px;
+    box-shadow: 6px 6px 0 var(--paper);
+  }
+  .pillar-num { font-size: 13rem; }
+}

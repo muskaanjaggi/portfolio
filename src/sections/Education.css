@@ -1,0 +1,88 @@
+.edu {
+  padding-block: 0 var(--section-y);
+}
+
+.edu-card {
+  position: relative;
+  padding: clamp(24px, 4vw, 48px);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-l);
+  background: var(--lime);
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.edu-meta {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.edu-meta h2 {
+  margin: 0;
+}
+
+.edu-row {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1.7fr) minmax(0, 1fr) 200px;
+  gap: 12px 32px;
+  align-items: center;
+}
+/* Each school gets its own band */
+.edu-row + .edu-row {
+  margin-top: clamp(24px, 3vw, 36px);
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1.5px dashed rgba(17, 17, 17, 0.35);
+}
+.edu-num {
+  align-self: start;
+  padding-top: 0.6em;
+  opacity: 0.6;
+}
+/* Older entries step down a size so the current degree stays the headline */
+.edu-row--past .edu-degree {
+  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+}
+.edu-row--past .edu-years {
+  font-size: clamp(1.3rem, 2.2vw, 2rem);
+}
+.edu-degree {
+  font-size: clamp(2rem, 3.8vw, 3.6rem);
+}
+.edu-school {
+  display: grid;
+  gap: 4px;
+}
+.edu-school .serif {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.edu-years {
+  justify-self: end;
+  font-size: clamp(1.6rem, 3vw, 2.8rem);
+  white-space: nowrap;
+}
+.edu-courses {
+  grid-column: 2 / -1;
+  margin-top: 12px;
+}
+.edu-ph {
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+@media (max-width: 900px) {
+  .edu-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 8px;
+  }
+  .edu-num {
+    padding-top: 0;
+  }
+  .edu-years {
+    justify-self: start;
+  }
+  .edu-courses {
+    grid-column: 1;
+  }
+}

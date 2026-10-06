@@ -1,0 +1,193 @@
+.creative-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 26px 22px;
+  margin: 0;
+}
+
+.creative-tile {
+  transform: rotate(var(--tilt));
+  transition: transform 0.6s var(--ease-spring);
+}
+.creative-tile:hover {
+  transform: rotate(0deg) translateY(-6px);
+  z-index: 2;
+}
+
+.creative-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--accent);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.creative-media {
+  overflow: hidden;
+}
+.creative-tile--tall .creative-media { aspect-ratio: 3 / 4; }
+.creative-tile--wide .creative-media { aspect-ratio: 4 / 3; }
+.creative-tile--square .creative-media { aspect-ratio: 1; }
+
+.creative-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.9s var(--ease-out);
+}
+.creative-tile:hover .creative-media img {
+  scale: 1.06;
+}
+
+.creative-ph {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding-inline: 8px;
+  font-size: clamp(1.3rem, 2.3vw, 2.3rem);
+  text-align: center;
+  color: var(--accent);
+  -webkit-text-stroke: 3px var(--on-accent);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.35) 0 12%, transparent 13%),
+    radial-gradient(circle at 80% 90%, rgba(17, 17, 17, 0.18) 0 20%, transparent 21%);
+  transition: transform 0.9s var(--ease-out);
+}
+.creative-tile:hover .creative-ph {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+/* Album label */
+.creative-caption {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--ink);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.creative-title {
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .creative-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 12px;
+  }
+  .creative-card {
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .creative-ph {
+    font-size: 1.3rem;
+    -webkit-text-stroke-width: 2px;
+  }
+  .creative-caption {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+/* "Stack of prints" behind a tile that opens an album */
+button.creative-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+  transform: rotate(4deg) translate(6px, 4px);
+  transition: transform 0.5s var(--ease-spring);
+}
+button.creative-card {
+  overflow: visible;
+  transition: transform 0.4s var(--ease-spring);
+}
+button.creative-card .creative-media {
+  border-radius: calc(var(--radius) - 2px);
+}
+button.creative-card:hover::before {
+  transform: rotate(8deg) translate(12px, 6px);
+}
+button.creative-card:active {
+  transform: scale(0.97);
+}
+.creative-card.is-empty .creative-caption {
+  opacity: 0.8;
+}
+
+/* ── Opened album ───────────────────────────── */
+.album {
+  position: fixed;
+  inset: 0;
+  z-index: 850; /* above the nav, below grain + cursor */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgba(17, 17, 17, 0.97);
+  color: var(--paper);
+}
+.album-inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: clamp(20px, 4vw, 56px) var(--gutter) 80px;
+}
+.album-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 12px 20px;
+  background: linear-gradient(rgba(17, 17, 17, 0.96) 70%, transparent);
+}
+.album-count {
+  color: var(--accent);
+}
+.album-title {
+  font-size: var(--fs-h2);
+  margin-top: 6px;
+}
+.album-note {
+  max-width: 52ch;
+  margin-top: 10px;
+  color: var(--muted-on-ink);
+}
+.album-close {
+  flex: 0 0 auto;
+  --btn-shadow: var(--accent);
+}
+.album-grid {
+  columns: 3 300px;
+  column-gap: 20px;
+  margin: 12px 0 0;
+}
+.album-item {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+.album-item img {
+  width: 100%;
+  border: 2px solid var(--paper);
+  border-radius: var(--radius-s);
+  background: var(--ink-2);
+}
+.album-item figcaption {
+  padding-top: 8px;
+  color: var(--muted-on-ink);
+}

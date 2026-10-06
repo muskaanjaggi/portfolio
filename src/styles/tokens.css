@@ -1,0 +1,90 @@
+/* ─────────────────────────────────────────────────────────────
+   DESIGN TOKENS
+   Editorial magazine × digital playground × creative-coding lab.
+   Mostly ink + paper, with controlled bursts of colour.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* Base */
+  --ink: #111111;
+  --ink-2: #1a1817;
+  --ink-3: #2b2826;
+  --paper: #fff8ef;
+  --paper-2: #f7ecde;
+  --paper-3: #eadcc9;
+
+  /* Bursts */
+  --pink: #ff4fa3;
+  --coral: #ff6b57;
+  --yellow: #ffd84d;
+  --lime: #c7f36b;
+  --purple: #8c5cff;
+
+  /* Text tones (AA on their backgrounds) */
+  --muted-on-paper: #5c554e;
+  --muted-on-ink: #a8a098;
+
+  /* Semantic */
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --muted: var(--muted-on-paper);
+  --line: rgba(17, 17, 17, 0.14);
+  --focus: var(--purple);
+
+  /* Type */
+  --font-display: 'Bricolage Grotesque', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --fs-mega: clamp(4.4rem, 18.5vw, 19rem);
+  --fs-h1: clamp(3.2rem, 10vw, 10rem);
+  --fs-h2: clamp(2.6rem, 7.2vw, 7rem);
+  --fs-h3: clamp(1.6rem, 3vw, 2.6rem);
+  --fs-lead: clamp(1.15rem, 1rem + 0.7vw, 1.6rem);
+  --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --fs-small: 0.875rem;
+  --fs-mono: 0.72rem;
+
+  /* Space */
+  --gutter: clamp(16px, 4vw, 56px);
+  --section-y: clamp(64px, 8vw, 120px);
+  --maxw: 1480px;
+
+  /* Shape */
+  --radius-s: 10px;
+  --radius: 20px;
+  --radius-l: 32px;
+  --shadow-hard: 4px 4px 0 var(--ink);
+  --shadow-hard-lg: 8px 8px 0 var(--ink);
+  --shadow-soft: 0 24px 60px -24px rgba(17, 17, 17, 0.35);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur: 0.45s;
+
+  --nav-h: 64px;
+}
+
+/* Dark sections re-map the semantic tokens */
+.theme-ink {
+  --bg: var(--ink);
+  --fg: var(--paper);
+  --muted: var(--muted-on-ink);
+  --line: rgba(255, 248, 239, 0.16);
+  --focus: var(--lime);
+  --shadow-hard: 4px 4px 0 var(--paper);
+  --shadow-hard-lg: 8px 8px 0 var(--paper);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Colour helpers driven by data (accent: 'pink' → .c-pink) */
+.c-pink { --accent: var(--pink); --on-accent: var(--ink); }
+.c-coral { --accent: var(--coral); --on-accent: var(--ink); }
+.c-yellow { --accent: var(--yellow); --on-accent: var(--ink); }
+.c-lime { --accent: var(--lime); --on-accent: var(--ink); }
+.c-purple { --accent: var(--purple); --on-accent: var(--paper); }
+.c-ink { --accent: var(--ink); --on-accent: var(--paper); }
